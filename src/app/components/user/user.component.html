@@ -1,0 +1,58 @@
+<h1>Hello my name is {{name}} </h1> <!-- this is part of user component -->
+<p>I'm {{age}} years old</p> <!-- The name come by interpolation -->
+<p>Email: {{email}}</p>
+<p>Address: {{address.street}}, {{address.city}} - {{address.state}}</p>
+
+<button (click)="onClick()"> Click Me </button>
+<button (click)="toggleEdit()"> Edit profile </button>
+
+<div *ngIf=isEdit>
+  <h1>Edit User</h1>
+  <form>
+      <div>
+        <label for="name">Name: </label>
+        <input type="text" [(ngModel)]="name" name="name">
+      </div>
+      <div>
+        <label for="age">Age: </label>
+        <input type="number" [(ngModel)]="age" name="age">
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input type="email" [(ngModel)]="email" name="email">
+      </div>
+      <div>
+        <label for="street">Street: </label>
+        <input type="text" [(ngModel)]="address.street" name="street">
+      </div>
+      <div>
+        <label for="city">City: </label>
+        <input type="text" [(ngModel)]="address.city" name="city">
+      </div>
+      <div>
+        <label for="state">State: </label>
+        <input type="text" [(ngModel)]="address.state" name="state">
+      </div>
+  </form>
+<p>My hobbies are:</p>
+<ol>
+  <li *ngFor="let hobby of hobbies; let i = index">
+    {{i+1}}: {{hobby}} 
+    <button (click)="deleteHobby(hobby)">X</button>
+  </li>
+</ol>
+
+<p>add a new hobby</p>
+<form (submit)="addHobby(hobbyName.value)">
+  <div>
+    <label for="hobbyName"> Hobby </label>
+    <input type="text" #hobbyName>
+  </div>
+</form>
+
+</div>
+<h1>Posts</h1>
+<div *ngFor="let post of posts">
+  <h4>{{post.title}}</h4>
+  <p>{{post.body}}</p>
+</div>
